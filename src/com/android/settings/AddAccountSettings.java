@@ -107,11 +107,9 @@ public class AddAccountSettings extends AccountPreferenceBase {
 
     private AccountManagerCallback<Bundle> mCallback = new AccountManagerCallback<Bundle>() {
         public void run(AccountManagerFuture<Bundle> future) {
-            boolean accountAdded = false;
             try {
                 Bundle bundle = future.getResult();
                 bundle.keySet();
-                accountAdded = true;
                 if (LDEBUG) Log.d(TAG, "account added: " + bundle);
             } catch (OperationCanceledException e) {
                 if (LDEBUG) Log.d(TAG, "addAccount was canceled");

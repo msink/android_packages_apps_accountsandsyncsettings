@@ -59,7 +59,6 @@ import java.util.HashMap;
 public class AccountSyncSettings extends AccountPreferenceBase implements OnClickListener {
     private static final String ACCOUNT_KEY = "account";
     private static final String TAG = "AccountSettings";
-    private static final String CHANGE_PASSWORD_KEY = "changePassword";
     private static final int MENU_SYNC_NOW_ID = Menu.FIRST;
     private static final int MENU_SYNC_CANCEL_ID = Menu.FIRST + 1;
     private static final int REALLY_REMOVE_DIALOG = 100;
@@ -73,7 +72,6 @@ public class AccountSyncSettings extends AccountPreferenceBase implements OnClic
     protected View mRemoveAccountArea;
     private java.text.DateFormat mDateFormat;
     private java.text.DateFormat mTimeFormat;
-    private Preference mAuthenticatorPreferences;
     private Account mAccount;
     // List of all accounts, updated when accounts are added/removed
     // We need to re-scan the accounts on sync events, in case sync state changes.

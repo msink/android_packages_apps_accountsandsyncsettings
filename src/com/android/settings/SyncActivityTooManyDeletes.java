@@ -107,8 +107,8 @@ public class SyncActivityTooManyDeletes extends Activity
         setContentView(ll);
     }
 
-    public void onItemClick(AdapterView parent, View view, int position, long id) {
-        // the contants for position correspond to the items options array in onCreate()
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        // the constants for position correspond to the items options array in onCreate()
         if (position == 0) startSyncReallyDelete();
         else if (position == 1) startSyncUndoDeletes();
         finish();
