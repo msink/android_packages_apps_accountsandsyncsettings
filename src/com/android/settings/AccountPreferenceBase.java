@@ -31,6 +31,7 @@ import android.content.Context;
 import android.content.SyncAdapterType;
 import android.content.SyncStatusObserver;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -132,12 +133,16 @@ class AccountPreferenceBase extends PreferenceActivity implements OnAccountsUpda
     protected Drawable getDrawableForType(final String accountType) {
         Drawable icon = null;
         if (mTypeToAuthDescription.containsKey(accountType)) {
+            AuthenticatorDescription desc = null;
             try {
-                AuthenticatorDescription desc = (AuthenticatorDescription)
-                        mTypeToAuthDescription.get(accountType);
-                Context authContext = createPackageContext(desc.packageName, 0);
-                icon = authContext.getResources().getDrawable(desc.iconId);
+                desc = (AuthenticatorDescription)mTypeToAuthDescription.get(accountType);
+                if (desc != null) {
+                    Context authContext = createPackageContext(desc.packageName, 0);
+                    icon = authContext.getResources().getDrawable(desc.iconId);
+                }
             } catch (PackageManager.NameNotFoundException e) {
+                Log.w(TAG, "failed createPackageContext for account type " + accountType);
+            } catch (Resources.NotFoundException e) {
                 // TODO: place holder icon for missing account icons?
                 Log.w(TAG, "No icon for account type " + accountType);
             }
@@ -153,14 +158,18 @@ class AccountPreferenceBase extends PreferenceActivity implements OnAccountsUpda
     protected CharSequence getLabelForType(final String accountType) {
         CharSequence label = null;
         if (mTypeToAuthDescription.containsKey(accountType)) {
-             try {
-                 AuthenticatorDescription desc = (AuthenticatorDescription)
-                         mTypeToAuthDescription.get(accountType);
-                 Context authContext = createPackageContext(desc.packageName, 0);
-                 label = authContext.getResources().getText(desc.labelId);
-             } catch (PackageManager.NameNotFoundException e) {
-                 Log.w(TAG, "No label for account type " + ", type " + accountType);
-             }
+            AuthenticatorDescription desc = null;
+            try {
+                desc = (AuthenticatorDescription)mTypeToAuthDescription.get(accountType);
+                if (desc != null) {
+                    Context authContext = createPackageContext(desc.packageName, 0);
+                    label = authContext.getResources().getText(desc.labelId);
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.w(TAG, "failed createPackageContext for account type " + accountType);
+            } catch (Resources.NotFoundException e) {
+                Log.w(TAG, "No label for account type " + accountType);
+            }
         }
         return label;
     }
