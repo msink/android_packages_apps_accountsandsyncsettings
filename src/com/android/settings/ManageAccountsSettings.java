@@ -99,6 +99,7 @@ public class ManageAccountsSettings extends AccountPreferenceBase implements Vie
                 if (backgroundDataSetting) {
                     setBackgroundDataInt(true);
                     onSyncStateUpdated();
+                    mBackgroundDataCheckBox.setChecked(true);
                 } else {
                     // This will get unchecked only if the user hits "Ok"
                     mBackgroundDataCheckBox.setChecked(true);
@@ -128,8 +129,8 @@ public class ManageAccountsSettings extends AccountPreferenceBase implements Vie
                                     new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     setBackgroundDataInt(false);
-                                    pref.setChecked(false);
                                     onSyncStateUpdated();
+                                    pref.setChecked(false);
                                 }
                             })
                         .setNegativeButton(android.R.string.cancel, null)
