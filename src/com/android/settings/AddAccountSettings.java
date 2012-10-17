@@ -98,7 +98,7 @@ public class AddAccountSettings extends AccountPreferenceBase {
                 ProviderPreference p = new ProviderPreference(this, pref.type, drawable, pref.name);
                 mAddAccountGroup.addPreference(p);
             }
-        } else {
+        } else if (mAuthorities != null) {
             String auths = new String();
             for (String a : mAuthorities) auths += a + " ";
             Log.w(TAG, "No providers found for authorities: " + auths);
