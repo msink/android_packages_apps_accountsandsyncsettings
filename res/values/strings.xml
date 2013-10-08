@@ -104,10 +104,10 @@
     <!-- Title of remove message for remove account dialog -->
     <string name="really_remove_account_title">Remove account</string>
     <!-- Remove account message in dialog -->
-    <string name="really_remove_account_message">Do you really want to remove this account? Removing it will also delete all of its messages, contacts, and other data from the phone.
+    <string name="really_remove_account_message">Do you really want to remove this account? Removing it will also delete all of its messages, contacts, and other data from the book.
     \nProceed?</string>
     <!-- This is shown if the autheticator for a given account fails to remove it. -->
-    <string name="remove_account_failed">This account is required by some applications. You can only remove it by resetting the phone to factory defaults (which deletes all your personal data). You do that in the Settings application, under Privacy.</string>
+    <string name="remove_account_failed">This account is required by some applications. You can only remove it by resetting the book to factory defaults (which deletes all your personal data). You do that in the Settings application, under Privacy.</string>
     <!-- What to show in messaging that refers to this provider, e.g. AccountSyncSettings -->
     <string name="provider_label">Push subscriptions</string>
     <!-- Formatter in AccountSyncSettings for each application we wish to synchronize, e.g. "Sync Calendar" -->
